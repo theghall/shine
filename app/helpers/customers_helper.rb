@@ -26,6 +26,8 @@ module CustomersHelper
         @where_args[:first_name] = starts_with(search_term)
 
         @where_args[:last_name] = starts_with(search_term)
+
+        @order = "last_name asc"
       end
 
       def build_for_email_search(search_term)
