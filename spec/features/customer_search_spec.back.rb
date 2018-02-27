@@ -10,9 +10,6 @@ require 'rails_helper'
 
 feature "Customer Search" do
 
-  # existing setup helper methods, and tests...
-
-
   # setup and tests will go here...
 
 
@@ -40,6 +37,7 @@ feature "Customer Search" do
   let(:password) { "password123" }
 
   before do
+    puts "Creating customers..."
     create_test_user(email: email, password: password)
 
     create_customer first_name: "Chris"    , last_name: "Aaron"
@@ -54,6 +52,7 @@ feature "Customer Search" do
   end
 
   scenario "Search by Name"do
+    puts "Search by Name...."
     visit "/customers"
 
     # Login to get access to /customers
@@ -71,13 +70,25 @@ feature "Customer Search" do
 
       list_group_items = page.all("ol li.list-group-item")
 
-      expect(list_group_items[0]).to have_content("Patricia")
+      expect(list_group_items[0]).to have_content("Pat")
       expect(list_group_items[0]).to have_content("Dobbs")
       expect(list_group_items[3]).to have_content("I.T.")
       expect(list_group_items[3]).to have_content("Pat")
     end
-  end
 
+
+    click_on "View Details...", match: :first
+
+    customer = Customer.find_by(email: "pat123@somewhere.net")
+
+    within "section.customer-details" do
+      expect(page).to have_content(customer.id)
+      expect(page).to have_content(customer.first_name)
+      expect(page).to have_content(customer.last_name)
+      expect(page).to have_content(customer.email)
+      expect(page).to have_content(customer.username)
+    end
+  end
   scenario "Search by Email" do
     visit "/customers"
 
@@ -102,15 +113,6 @@ feature "Customer Search" do
       expect(list_group_items[3]).to have_content("I.T.")
       expect(list_group_items[3]).to have_content("Pat")
     end
-    click_on "View Details...", match: :first
-
-    customer = Customer.find_by!(email: "pat123@somewhere.net")
-    within "section.customer-details" do
-      expect(page).to have_content(customer.id)
-      expect(page).to have_content(customer.first_name)
-      expect(page).to have_content(customer.last_name)
-      expect(page).to have_content(customer.email)
-      expect(page).to have_content(customer.username)
-    end
   end
+
 end
