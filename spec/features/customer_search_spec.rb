@@ -23,17 +23,36 @@ feature "Customer Search" do
       password_confirmation: password)
   end
 
+  def create_address
+    state = State.find_or_create_by!(
+      code: Faker::Address.state_abbr,
+      name: Faker::Address.state)
+
+    Address.create!(
+      street: Faker::Address.street_address,
+      city: Faker::Address.city,
+      state: state,
+      zip: Faker::Address.zip)
+  end
+
   def create_customer(first_name:, last_name:, email: nil)
     username = "#{Faker::Internet.user_name}#{rand(1000)}"
     email  ||= "#{username}#{rand(1000)}@" +
                  "#{Faker::Internet.domain_name}"
 
-    Customer.create!(
+    customer = Customer.create!(
       first_name: first_name,
       last_name: last_name,
       username: username,
       email: email
     )
+
+    customer.create_customers_billing_address(address: create_address)
+
+    customer.customers_shipping_address.create(address: create_address, 
+                                               primary: true)
+    
+    customer
   end
 
   let(:email)    { "pat@example.com" }
@@ -106,6 +125,7 @@ feature "Customer Search" do
 
     customer = Customer.find_by!(email: "pat123@somewhere.net")
     within "section.customer-details" do
+      puts page.html
       expect(page).to have_content(customer.id)
       expect(page).to have_content(customer.first_name)
       expect(page).to have_content(customer.last_name)
