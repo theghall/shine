@@ -80941,7 +80941,7 @@ var CreditCardComponent = Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o"
 /* 354 */
 /***/ (function(module, exports) {
 
-module.exports = " <article class=\"panel panel-default\"> <header class=\"panel-heading\"> <h1 class=\"h3\">Billing Info</h1> </header> <section class=\"panel-body\"> <div class=\"row\"> <div class=\"col-md-7\"> <p class=\"h4\">****-****-****-{{credit_card_info.last_four}} <span class=\"label label-success\">{{credit_card_info.type}}</span> </p> <p><label>Expires:</label>{{credit_card_info.expiration_month}}/{{credit_card_info.expiration_year}}</p> </div> <div class=\"col-md-5 text-right\"> <a href=\"{{credit_card_info.link}}\" class=\"btn btn-lg btn-default\">View Details...</a> </div> </div> </section> </article> ";
+module.exports = " <article class=\"panel panel-default\"> <header class=\"panel-heading\"> <h1 class=\"h3\">Billing Info</h1> </header> <section class=\"panel-body\"> <div class=\"row\"> <div class=\"col-md-7\"> <p class=\"h4\">****-****-****-{{credit_card_info.last_four}} <span class=\"label label-success\">{{credit_card_info.type}}</span> </p> <p><label>Expires:</label>{{credit_card_info.expiration_month}}/{{credit_card_info.expiration_year}}</p> </div> <div class=\"col-md-5 text-right\"> <a href=\"{{credit_card_info.link}}\" class=\"btn btn-lg btn-default\">View Details...</a> </div> </div> </section> </article> <aside class=\"progress\" *ngIf=\"!credit_card_info\"> <div class=\"progress-bar progress-bar-info progress-bar-striped active\" role=\"progressbar\" style=\"width:100%\"> Loading... </div> </aside> ";
 
 /***/ }),
 /* 355 */
