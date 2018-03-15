@@ -48,5 +48,20 @@ class CustomersController < ApplicationController
       format.json { render json: { customer: customer_detail } }
     end
   end
+
+  def update
+    customer_detail = CustomerDetail.find(params[:id])
+    customer_detail.update(params)
+    head :ok
+  end
+
+  private
+
+    def customer_params
+      params.except(:format).require(:customer)
+        .permit(:first_name, :last_name, :username, :email,
+                :shipping_street, :shipping_state, :shipping_zip,
+                :billing_street, :billing_state, :billing_zip)
+    end
 end
 

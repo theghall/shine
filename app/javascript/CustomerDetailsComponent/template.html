@@ -2,12 +2,23 @@
   <form>
     <div class="row">
       <div class="col-md-6">
-        <shine-customer-info bind-customer="customer"></shine-customer-info>
-        <shine-address addressType="Shipping" bind-address="customer.shipping_address"></shine-address>
+        <shine-customer-info
+          bind-customer="customer"
+          on-customerInfoChanged="saveCustomer($event)">
+        </shine-customer-info>
+        <shine-address
+          addressType="Shipping"
+          bind-address="customer.shipping_address"
+          on-addressChanged="saveShippingAddress($event)">
+        </shine-address>
       </div>
       <div class="col-md-6">
         <shine-credit-card bind-cardholder_id="customer.cardholder_id"></shine-credit-card>
-        <shine-address addressType="Billing" bind-address="customer.billing_address"></shine-address>
+        <shine-address
+          addressType="Billing"
+          bind-address="customer.billing_address"
+          on-addressChanged="saveBillingAddress($event)">
+        </shine-address>
       </div>
   </form>
 </section>

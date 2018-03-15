@@ -18,8 +18,9 @@ import { RouterModule            } from "@angular/router";
 import { CustomerSearchComponent  } from "CustomerSearchComponent";
 import { CustomerDetailsComponent } from "CustomerDetailsComponent";
 import { CustomerInfoComponent    } from "CustomerDetailsComponent/CustomerInfoComponent";
-import { CreditCardComponent    } from "CustomerDetailsComponent/CreditCardComponent";
+import { CreditCardComponent      } from "CustomerDetailsComponent/CreditCardComponent";
 import { CustomerAddressComponent } from "CustomerDetailsComponent/CustomerAddressComponent";
+import { TextFieldComponent       } from "TextFieldComponent";
 
 var RESULTS = [
   {
@@ -88,7 +89,7 @@ var CustomerAppModule = NgModule({
  	routing ],
   declarations: [ CustomerSearchComponent, CustomerDetailsComponent, 
   				  CustomerInfoComponent, CreditCardComponent,
-				  CustomerAddressComponent, AppComponent ],
+				  CustomerAddressComponent, TextFieldComponent, AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 .Class({

@@ -1,0 +1,38 @@
+import "./SpecHelper";
+import { TextFieldComponent } from "TextFieldComponent";
+
+var component = null;
+
+/*
+describe("TextFieldComponent", function() {
+	beforeEach(function() {
+		component = new TextFieldComponent();
+	});
+
+	describe("modelValid", function() {
+		if("returns false if the model is dirty and invalid", function() {
+			var model = {
+				dirty = true,
+				invalid = true
+			}
+			expect(component.modelValid(model)).toBe(false);
+		});
+
+		it("returns true if the model is dirty but valid", function() {
+			var model = {
+				dirty = true,
+				invalid = false
+			}
+			expect(component.modelValid(model)).toBe(true);
+		});
+
+		it("returns true if the model is invalid but not dirty", function() {
+			var model = {
+				dirty = false,
+				invalid = true
+			}
+			expect(component.modelValid(model)).toBe(true);
+		});
+	});`
+});
+*/

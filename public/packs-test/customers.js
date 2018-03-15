@@ -71703,6 +71703,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_CustomerDetailsComponent_CustomerInfoComponent__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_CustomerDetailsComponent_CreditCardComponent__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_CustomerDetailsComponent_CustomerAddressComponent__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_TextFieldComponent__ = __webpack_require__(357);
 /***
  * Excerpted from "Rails, Angular, Postgres, and Bootstrap, Second Edition",
  * published by The Pragmatic Bookshelf.
@@ -71711,6 +71712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * We make no guarantees that this code is fit for any purpose.
  * Visit http://www.pragmaticprogrammer.com/titles/dcbang2 for more book information.
 ***/
+
 
 
 
@@ -71775,7 +71777,7 @@ var AppComponent = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Com
 
 var CustomerAppModule = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
   imports: [__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* HttpModule */], routing],
-  declarations: [__WEBPACK_IMPORTED_MODULE_7_CustomerSearchComponent__["a" /* CustomerSearchComponent */], __WEBPACK_IMPORTED_MODULE_8_CustomerDetailsComponent__["a" /* CustomerDetailsComponent */], __WEBPACK_IMPORTED_MODULE_9_CustomerDetailsComponent_CustomerInfoComponent__["a" /* CustomerInfoComponent */], __WEBPACK_IMPORTED_MODULE_10_CustomerDetailsComponent_CreditCardComponent__["a" /* CreditCardComponent */], __WEBPACK_IMPORTED_MODULE_11_CustomerDetailsComponent_CustomerAddressComponent__["a" /* CustomerAddressComponent */], AppComponent],
+  declarations: [__WEBPACK_IMPORTED_MODULE_7_CustomerSearchComponent__["a" /* CustomerSearchComponent */], __WEBPACK_IMPORTED_MODULE_8_CustomerDetailsComponent__["a" /* CustomerDetailsComponent */], __WEBPACK_IMPORTED_MODULE_9_CustomerDetailsComponent_CustomerInfoComponent__["a" /* CustomerInfoComponent */], __WEBPACK_IMPORTED_MODULE_10_CustomerDetailsComponent_CreditCardComponent__["a" /* CreditCardComponent */], __WEBPACK_IMPORTED_MODULE_11_CustomerDetailsComponent_CustomerAddressComponent__["a" /* CustomerAddressComponent */], __WEBPACK_IMPORTED_MODULE_12_TextFieldComponent__["a" /* TextFieldComponent */], AppComponent],
   bootstrap: [AppComponent]
 }).Class({
   constructor: function constructor() {}
@@ -80883,7 +80885,7 @@ var CustomerInfoComponent = Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["
 /* 352 */
 /***/ (function(module, exports) {
 
-module.exports = " <article class=\"panel panel-primary\"> <header class=\"panel-heading\"> <h1>Customer</h1> </header> <section class=\"panel-body\"> <div class=\"row\"> <div class=\"col-md-4\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"first-name\">First Name</label> <input type=\"text\" class=\"form-control\" name=\"first-name\" bindon-ngModel=\"customer.first_name\"> </div> </div> <div class=\"col-md-4\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"last-name\">Last Name</label> <input type=\"text\" class=\"form-control\" name=\"last-name\" bindon-ngModel=\"customer.last_name\"> </div> </div> <div class=\"col-md-4\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"username\">Username</label> <div class=\"input-group\"> <div class=\"input-group-addon\">@</div> <input type=\"text\" class=\"form-control\" name=\"username\" bindon-ngModel=\"customer.username\"> </div> </div> </div> </div> <div class=\"form-group\"> <label class=\"sr-only\" for=\"email\">Email</label> <input type=\"text\" class=\"form-control\" name=\"email\" bindon-ngModel=\"customer.email\"> </div> </section> <footer class=\"panel-footer\"> <label for=\"joined\">Joined</label> 12/31/2014 </footer> </article> ";
+module.exports = " <article class=\"panel panel-primary\"> <header class=\"panel-heading\"> <h1>Customer</h1> </header> <section class=\"panel-body\"> <div class=\"row\"> <div class=\"col-md-4\"> <shine-text-field bind-object=\"customer\" field_name=\"first_name\" label=\"First Name\"> </shine-text-field> </div> <div class=\"col-md-4\"> <shine-text-field bind-object=\"customer\" field_name=\"last_name\" label=\"Last Name\"> </shine-text-field> </div> <div class=\"col-md-4\"> <shine-text-field bind-object=\"customer\" field_name=\"username\" label=\"Username\" addon=\"@\"> </shine-text-field> </div> </div> <shine-text-field bind-object=\"customer\" field_name=\"email\" label=\"Email\"> </shine-text-field> </section> <footer class=\"panel-footer\"> <label for=\"joined\">Joined</label> 12/31/2014 </footer> </article> ";
 
 /***/ }),
 /* 353 */
@@ -80976,7 +80978,50 @@ var CustomerAddressComponent = Object(__WEBPACK_IMPORTED_MODULE_0__angular_core_
 /* 356 */
 /***/ (function(module, exports) {
 
-module.exports = " <article class=\"panel panel-default\"> <header class=\"panel-heading\"> <h2 class=\"h4\">{{addressType}} Address</h2> </header> <section class=\"panel-body\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"street-address\">Street Address</label> <input type=\"text\" class=\"form-control\" name=\"street-address\" bindon-ngModel=\"address.street\"> </div> <div class=\"row\"> <div class=\"col-md-6\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"city\">City</label> <input type=\"text\" class=\"form-control\" name=\"city\" bindon-ngModel=\"address.city\"> </div> </div> <div class=\"col-md-2\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"state\">State</label> <input type=\"text\" class=\"form-control\" name=\"state\" bindon-ngModel=\"address.state\"> </div> </div> <div class=\"col-md-4\"> <div class=\"form-group\"> <label class=\"sr-only\" for=\"zip\">Zip</label> <input type=\"text\" class=\"form-control\" name=\"zip\" bindon-ngModel=\"address.zipcode\"> </div> </div> </div> </section> </article> ";
+module.exports = "<article class=\"panel panel-default {{AddressType}}\"> <header class=\"panel-heading\"> <h2 class=\"h4\">{{addressType}} Address</h2> </header> <section class=\"panel-body\"> <shine-text-field bind-object=\"address\" field_name=\"street\" label=\"Street Address\"> </shine-text-field> <div class=\"row\"> <div class=\"col-md-6\"> <shine-text-field bind-object=\"address\" field_name=\"city\" label=\"City\"> </shine-text-field> </div> <div class=\"col-md-2\"> <shine-text-field bind-object=\"address\" field_name=\"state\" compact=\"true\" label=\"State\"> </shine-text-field> </div> <div class=\"col-md-4\"> <shine-text-field bind-object=\"address\" field_name=\"zipcode\" pattern=\"\\d\\d\\d\\d\\d(-\\d\\d\\d\\d)?\" label=\"Zip\"> </shine-text-field> </div> </div> </section> </article> ";
+
+/***/ }),
+/* 357 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextFieldComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_html__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__template_html__);
+
+
+var TextFieldComponent = Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    selector: "shine-text-field",
+    template: __WEBPACK_IMPORTED_MODULE_1__template_html___default.a,
+    inputs: [
+        "object",
+        "field_name",
+        "compact",
+        "pattern",
+        "label",
+        "addon"
+    ]
+}).Class({
+    constructor: [
+        function () {
+            this.object = null;
+            this.field_name = null;
+            this.compact = false;
+            this.pattern = null;
+            this.label = null;
+            this.addon = null;
+        }
+    ]
+});
+
+
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports) {
+
+module.exports = "<div bind-class=\"( model.invalid && model.dirty ) ?\n                    'form-group has-warning' :\n                    'form-group'\"> <label class=\"sr-only\" attr.for=\"{{field_name}}\">{{label}}</label> <div bind-class=\"addon ? 'input-group' : ''\"> <div *ngIf=\"addon\" class=\"input-group-addon\">{{addon}}</div> <input type=\"text\" bind-class=\"( compact && model.invalid && model.dirty ) ?\n                        'form-control alert-danger' :\n                        'form-control'\" attr.name=\"{{field_name}}\" required bind-pattern=\"pattern ? pattern : '^.*$'\" bindon-ngModel=\"object[field_name]\" ref-model=\"ngModel\"> </div> <aside *ngIf=\"!compact && model.invalid && model.dirty\" class=\"alert alert-danger\"> <small> <span *ngIf=\"pattern\">This is not a valid {{label}}</span> <span *ngIf=\"!pattern\">This is required</span> </small> </aside> </div> ";
 
 /***/ })
 /******/ ]);
